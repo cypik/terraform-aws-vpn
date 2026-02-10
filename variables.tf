@@ -168,11 +168,6 @@ variable "tunnel1_startup_action" {
   description = "(Optional, Default clear) The action to take after DPD timeout occurs for the first VPN tunnel. Specify restart to restart the IKE initiation. Specify clear to end the IKE session. Valid values are clear | none | restart."
 }
 
-variable "tunnel2_inside_cidr" {
-  type        = string
-  default     = ""
-  description = "The CIDR block of the inside IP addresses for the second VPN tunnel."
-}
 
 variable "tunnel2_preshared_key" {
   type        = string
@@ -364,9 +359,4 @@ variable "tunnel2_log_options" {
   type        = any
   default     = {}
   description = "(Optional) Options for sending VPN tunnel logs to CloudWatch."
-}
-
-output "vpn_connection_tunnel1_address" {
-  value       = try(aws_vpn_connection.default[0].tunnel1_address)
-  description = "A list with the the public IP address of the first VPN tunnel if `create_vpn_connection = true`, or empty otherwise"
 }
