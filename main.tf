@@ -11,19 +11,14 @@ module "labels" {
   managedby   = var.managedby
 }
 
-locals {
-  preshared_key_provided       = length(var.tunnel1_preshared_key) > 0 && length(var.tunnel2_preshared_key) > 0
-  preshared_key_not_provided   = false == local.preshared_key_provided
-  internal_cidr_provided       = length(var.tunnel1_inside_cidr) > 0 && length(var.tunnel2_inside_cidr) > 0
-  internal_cidr_not_provided   = false == local.internal_cidr_provided
-  tunnel_details_not_specified = local.internal_cidr_not_provided && local.preshared_key_not_provided
-}
 
 ##===================================================================
 ## aws_vpn_connection. Manages a Site-to-Site VPN connection.
 ##===================================================================
 resource "aws_vpn_connection" "default" {
-  count = var.enable_vpn_connection && local.tunnel_details_not_specified ? 1 : 0
+  count = var.enable_vpn_connection ? 1 : 0
+
+  tunnel2_preshared_key = var.tunnel2_preshared_key
 
   vpn_gateway_id                          = var.virtual_private_gateway_id != null ? var.virtual_private_gateway_id : join("", aws_vpn_gateway.vpn[*].id)
   customer_gateway_id                     = join("", aws_customer_gateway.main[*].id)
