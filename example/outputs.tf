@@ -17,8 +17,3 @@ output "vpn_connection_tunnel1_cgw_inside_address" {
   value       = module.vpn.vpn_connection_tunnel1_cgw_inside_address
   description = "Tunnel1 CGW address"
 }
-
-output "vpn_connection_tunnel1_address" {
-  value       = module.vpn.vpn_connection_tunnel1_address
-  description = "Tunnel1 address"
-}

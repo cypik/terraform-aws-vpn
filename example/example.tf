@@ -12,7 +12,7 @@ locals {
 ##=============================================================================
 module "vpc" {
   source      = "cypik/vpc/aws"
-  version     = "1.0.1"
+  version     = "1.0.4"
   name        = local.name
   environment = local.environment
   cidr_block  = "172.16.0.0/16"
@@ -23,7 +23,7 @@ module "vpc" {
 ##====================================================
 module "public_subnets" {
   source  = "cypik/subnet/aws"
-  version = "1.0.2"
+  version = "1.0.6"
 
   name               = local.name
   environment        = local.environment
