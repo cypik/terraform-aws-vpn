@@ -21,7 +21,7 @@ To use this module, you can include it in your Terraform configuration. Here's a
 ```hcl
 module "vpn" {
   source  = "cypik/vpn/aws"
-  version = "1.0.2"
+  version = "1.0.3"
   name                                      = local.name
   environment                               = local.environment
   vpc_id                                    = module.vpc.vpc_id
