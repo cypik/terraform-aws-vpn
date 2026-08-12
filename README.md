@@ -60,7 +60,7 @@ This project is licensed under the **MIT** License - see the [LICENSE](https://g
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_labels"></a> [labels](#module\_labels) | cypik/labels/aws | 1.0.3 |
+| <a name="module_labels"></a> [labels](#module\_labels) | cypik/labels/aws | 1.0.4 |
 
 ## Resources
 
