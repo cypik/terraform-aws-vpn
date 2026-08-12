@@ -171,7 +171,7 @@ variable "tunnel1_startup_action" {
 
 variable "tunnel2_preshared_key" {
   type        = string
-  default     = ""
+  default     = null
   description = "The preshared key of the second VPN tunnel."
 }
 

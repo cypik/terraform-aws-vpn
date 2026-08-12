@@ -21,7 +21,7 @@ To use this module, you can include it in your Terraform configuration. Here's a
 ```hcl
 module "vpn" {
   source  = "cypik/vpn/aws"
-  version = "1.0.1"
+  version = "1.0.2"
   name                                      = local.name
   environment                               = local.environment
   vpc_id                                    = module.vpc.vpc_id
@@ -47,20 +47,20 @@ This project is licensed under the **MIT** License - see the [LICENSE](https://g
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.5 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.13.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.15.8 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.58.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.13.1 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.58.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_labels"></a> [labels](#module\_labels) | cypik/labels/aws | 1.0.1 |
+| <a name="module_labels"></a> [labels](#module\_labels) | cypik/labels/aws | 1.0.4 |
 
 ## Resources
 
@@ -122,7 +122,7 @@ This project is licensed under the **MIT** License - see the [LICENSE](https://g
 | <a name="input_tunnel2_phase2_encryption_algorithms"></a> [tunnel2\_phase2\_encryption\_algorithms](#input\_tunnel2\_phase2\_encryption\_algorithms) | (Optional) List of one or more encryption algorithms that are permitted for the first VPN tunnel for phase 1 IKE negotiations. Valid values are AES128 \| AES256 \| AES128-GCM-16 \| AES256-GCM-16. | `list(string)` | `null` | no |
 | <a name="input_tunnel2_phase2_integrity_algorithms"></a> [tunnel2\_phase2\_integrity\_algorithms](#input\_tunnel2\_phase2\_integrity\_algorithms) | (Optional) List of one or more integrity algorithms that are permitted for the second VPN tunnel for phase 2 IKE negotiations. Valid values are SHA1 \| SHA2-256 \| SHA2-384 \| SHA2-512 | `list(string)` | `null` | no |
 | <a name="input_tunnel2_phase2_lifetime_seconds"></a> [tunnel2\_phase2\_lifetime\_seconds](#input\_tunnel2\_phase2\_lifetime\_seconds) | (Optional, Default 3600) The lifetime for phase 2 of the IKE negotiation for the second VPN tunnel, in seconds. Valid value is between 900 and 3600 | `number` | `null` | no |
-| <a name="input_tunnel2_preshared_key"></a> [tunnel2\_preshared\_key](#input\_tunnel2\_preshared\_key) | The preshared key of the second VPN tunnel. | `string` | `""` | no |
+| <a name="input_tunnel2_preshared_key"></a> [tunnel2\_preshared\_key](#input\_tunnel2\_preshared\_key) | The preshared key of the second VPN tunnel. | `string` | `null` | no |
 | <a name="input_tunnel2_rekey_fuzz_percentage"></a> [tunnel2\_rekey\_fuzz\_percentage](#input\_tunnel2\_rekey\_fuzz\_percentage) | (Optional, Default 100) The percentage of the rekey window for the second VPN tunnel (determined by tunnel1\_rekey\_margin\_time\_seconds) during which the rekey time is randomly selected. Valid value is between 0 and 100 | `number` | `null` | no |
 | <a name="input_tunnel2_rekey_margin_time_seconds"></a> [tunnel2\_rekey\_margin\_time\_seconds](#input\_tunnel2\_rekey\_margin\_time\_seconds) | (Optional, Default 540) The margin time, in seconds, before the phase 2 lifetime expires, during which the AWS side of the second VPN connection performs an IKE rekey. The exact time of the rekey is randomly selected based on the value for tunnel2\_rekey\_fuzz\_percentage. Valid value is between 60 and half of tunnel2\_phase2\_lifetime\_seconds | `number` | `null` | no |
 | <a name="input_tunnel2_replay_window_size"></a> [tunnel2\_replay\_window\_size](#input\_tunnel2\_replay\_window\_size) | (Optional, Default 1024) The number of packets in an IKE replay window for the second VPN tunnel. Valid value is between 64 and 2048. | `number` | `null` | no |
